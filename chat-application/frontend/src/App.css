@@ -1,0 +1,537 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+}
+
+/* LAYOUT */
+.app-layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 200px;
+  background: #202225;
+  color: white;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.room {
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.room:hover,
+.room.active {
+  background: #5865f2;
+}
+
+/* chat list container */
+.room-list {
+  flex: 1;
+  margin-top: 10px;
+}
+
+/* sidebar footer (ADD / DELETE) */
+.sidebar-footer {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #2f3136;
+}
+
+/* NEW CHAT BOX STYLE */
+.add-chat,
+.delete-chat {
+  flex: 1;
+  padding: 8px 0;
+  font-size: 13px;
+  background: #2f3136;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid #3a3c43;
+  transition: all 0.2s ease;
+}
+
+.add-chat:hover {
+  background: #5865f2;
+  border-color: #5865f2;
+}
+
+.delete-chat:hover {
+  background: #ed4245;
+  border-color: #ed4245;
+}
+
+/* CHAT AREA */
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #e5ddd5;
+}
+
+.chat-header {
+  background: white;
+  padding: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+/* MESSAGES */
+.messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+/* rows */
+.msg-row {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: flex-end;
+}
+
+.msg-row.left {
+  justify-content: flex-start;
+}
+
+.msg-row.right {
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+
+/* tighter spacing for grouped messages */
+.msg-row + .msg-row {
+  margin-top: 2px;
+}
+
+/* avatar */
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin: 0 8px;
+}
+
+/* bubble */
+.bubble {
+  max-width: 60%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: white;
+  position: relative;
+}
+
+.msg-row.right .bubble {
+  background: #dcf8c6;
+}
+
+/* sender + timestamp */
+.sender {
+  font-size: 11px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+/* edited label */
+.edited {
+  font-size: 10px;
+  color: #777;
+  margin-left: 4px;
+}
+
+/* INPUT */
+.input-area {
+  display: flex;
+  padding: 10px;
+  background: white;
+}
+
+input {
+  flex: 1;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  margin-left: 6px;
+  background: #5865f2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+/* PEOPLE PANEL */
+.people {
+  width: 220px;
+  background: #f8f9fa;
+  padding: 12px;
+  border-left: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+/* people header (ROOM NAME + PEOPLE) */
+.people-header {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.people-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.people-subtitle {
+  font-size: 12px;
+  color: #666;
+}
+
+/* person row */
+.person {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.person img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.person:hover,
+.person.active {
+  background: #d0d7ff;
+}
+
+/* ================= JOIN PAGE ================= */
+.join-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+/* heading */
+.join-page h2 {
+  margin: 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+/* input + button row */
+.join-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* input */
+.join-container input {
+  width: 220px;
+  height: 30px;
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
+/* button */
+.join-container button {
+  height: 30px;
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+/* ================= NEW FEATURES ================= */
+
+/* typing indicator */
+.typing-indicator {
+  font-size: 12px;
+  color: #555;
+  padding: 4px 15px;
+  font-style: italic;
+}
+
+/* read receipts */
+.seen {
+  font-size: 10px;
+  color: #888;
+  margin-top: 2px;
+  text-align: right;
+}
+
+.msg-row.right .seen {
+  color: #4fc3f7;
+}
+
+/* edit / delete actions */
+.msg-actions {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  display: none;
+  gap: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.bubble:hover .msg-actions {
+  display: flex;
+}
+
+/* ================= TIMESTAMP + READ RECEIPTS (FIX) ================= */
+
+/* container for time + ticks */
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  font-size: 11px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* timestamp */
+.time {
+  font-size: 11px;
+  color: #777;
+}
+
+/* ticks */
+.status {
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* blue ticks when seen */
+.status.seen {
+  color: #4f7cff;
+}
+
+/* ================= WHATSAPP STYLE ALIGNMENT FIX ================= */
+
+/* your messages: extreme right */
+.msg-row.right {
+  justify-content: flex-end;
+}
+
+/* other messages: extreme left */
+.msg-row.left {
+  justify-content: flex-start;
+}
+
+/* push bubble to edge */
+.msg-row.right .bubble {
+  margin-left: auto;
+  border-top-right-radius: 4px;
+}
+
+.msg-row.left .bubble {
+  margin-right: auto;
+  border-top-left-radius: 4px;
+}
+
+/* meta alignment */
+.msg-row.right .meta {
+  justify-content: flex-end;
+}
+
+.msg-row.left .meta {
+  justify-content: flex-start;
+}
+
+/* ================= IMAGE SHARING ================= */
+
+.chat-image {
+  max-width: 220px;
+  max-height: 220px;
+  border-radius: 8px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+
+.chat-image:hover {
+  opacity: 0.95;
+}
+
+/* ================= WHATSAPP INPUT BAR ================= */
+.input-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: #f0f2f5;
+}
+
+.icon-btn {
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.mic {
+  color: #555;
+}
+
+.send-btn {
+  background: #25d366;
+  color: white;
+  border-radius: 50%;
+  padding: 8px 10px;
+}
+
+/* image preview */
+.chat-image {
+  max-width: 220px;
+  border-radius: 10px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-bottom {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.new-room-input {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 6px;
+}
+
+.chat-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-buttons button {
+  flex: 1;
+  margin: 2px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.photos-section {
+  margin-top: 20px;
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.photo-thumb {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.recording-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #222;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+}
+
+.red-dot {
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.audio-bubble {
+  margin-top: 5px;
+  width: 200px;
+}
+
+.join-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.join-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.join-title {
+  margin-bottom: 10px;
+  margin-left: 0;
+}
+
+.join-container {
+  display: flex;
+  gap: 10px;
+}
+
+.join-input {
+  width: 250px; /* fixed width makes alignment perfect */
+}
+
+.join-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 🔥 Real blurred autumn image */
+  background: 
+    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
+    url("https://images.unsplash.com/photo-1507371341162-763b5e419408?auto=format&fit=crop&w=1920&q=80");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Glass effect card */
+.join-wrapper {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  padding: 40px;
+  border-radius: 20px;
+  width: 350px;
+  text-align: center;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
