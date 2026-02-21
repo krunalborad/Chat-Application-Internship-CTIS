@@ -1,7 +1,7 @@
 # 💬 Real-Time Chat Application
 
-A full-stack real-time chat application built using **React.js (Frontend)**, **Node.js + Express.js (Backend)**, **Socket.IO**, and **MongoDB**.  
-This application allows users to join chat rooms, send text messages, share images, record voice messages, and view chat history in real time.
+- A full-stack real-time chat application built using **React.js (Frontend)**, **Node.js + Express.js (Backend)**, **Socket.IO**, and **MongoDB**.  
+- This application allows users to join chat rooms, send text messages, share images, record voice messages, and view chat history in real time.
 
 ## 🚀 Features
 
@@ -126,6 +126,7 @@ The project successfully implements:
 - Persistent message storage with MongoDB  
 - Media handling (images and voice messages)  
 - Room-based chat architecture  
-- Modern and responsive user interface  
+- Modern and responsive user interface
+
 Through this project, core concepts such as REST APIs, event-driven architecture, database integration, and client-server communication were applied in a real-world scenario.
 This application serves as a strong foundation for building scalable communication platforms and can be further enhanced with authentication, cloud media storage, and deployment to production environments.
